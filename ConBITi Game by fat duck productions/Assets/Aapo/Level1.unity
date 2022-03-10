@@ -408,7 +408,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 20
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7798408, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -540,8 +540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Width: 2
   m_Damping: 10
-  m_MinFOV: 20
-  m_MaxFOV: 20
+  m_MinFOV: 40
+  m_MaxFOV: 40
 --- !u!1 &929004483
 GameObject:
   m_ObjectHideFlags: 0
