@@ -20,15 +20,15 @@ public class navMovement : MonoBehaviour
     public float time;
     public GameObject axe;
     public GameObject pickaxe;
-   
 
-
+    private Transform cuttableTree;
+    public GameObject inventory;
 
     private void Awake()
     {
-        //rb.maxAngularVelocity = 0;
+  
         _Agent = GetComponent<NavMeshAgent>();
-        //m_Animator.SetBool("afk", true);
+
         runAnimator.SetBool("afk", true);
         runAnimator.SetBool("walk", false);
         runAnimator.SetBool("cut", false);
@@ -44,23 +44,24 @@ public class navMovement : MonoBehaviour
         cmfz.m_MinFOV = 60f;
     }
 
-    //private IEnumerator jumpWait()
-    //{
-    //    _Agent.enabled = false;
-    //    rb.AddForce(Vector3.up * 5000f);
-    //    yield return new WaitForSeconds(1f);
-    //    _Agent.enabled = true;
-        
-    //}
-
     
-    // Update is called once per frame
     public void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventory.SetActive(true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+            inventory.SetActive(false);
+        }
 
 
-if (player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
+
+
+        if (player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
         {
             runAnimator.SetBool("afk", true);
             runAnimator.SetBool("walk", false);
@@ -92,24 +93,9 @@ if (player.transform.position.x == clickloc.transform.position.x && player.trans
             {
                 agent.SetDestination(hit.point);
                 clickloc.transform.position = hit.point;
-                //Instantiate(clickloc, hit.point, transform.rotation);
-                //StartCoroutine("clickSpawn");
-                //Destroy(clickloc);
+
                 Vector3 distanceToWalkPoint = transform.position - hit.point;
 
-
-
-                //if (distanceToWalkPoint.magnitude <= 1f)
-                //{
-                //    m_Animator.SetBool("afk", true);
-                //    m_Animator.SetBool("walk", false);
-                //}
-
-                //if (distanceToWalkPoint.magnitude > 1f)
-                //{
-                //    m_Animator.SetBool("afk", false);
-                //    m_Animator.SetBool("walk", true);
-                //}
 
             }
 
@@ -117,33 +103,14 @@ if (player.transform.position.x == clickloc.transform.position.x && player.trans
 
         
         
+       
 
-
-        //if(rb.velocity == Vector3.zero)
-        //{
-        //    m_Animator.SetBool("ifWalking", false);
-
-        //}
-
-        //if(rb.velocity != Vector3.zero)
-        //{
-        //    m_Animator.SetBool("ifWalking", true);
-        //}
-
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    Debug.Log("jump");
-        //    jumpWait();
-        //}
+       
     }
+  
 
 
    
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    collid
-    //}
 
 
 
