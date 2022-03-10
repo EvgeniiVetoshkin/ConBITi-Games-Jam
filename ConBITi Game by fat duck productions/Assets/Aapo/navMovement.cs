@@ -13,14 +13,20 @@ public class navMovement : MonoBehaviour
     public NavMeshAgent agent;
     public CinemachineFollowZoom cmfz;
    public Rigidbody rb;
-    Animator m_Animator;
-    
+    public Animator m_Animator;
+    public GameObject clickloc;
+    public GameObject player;
+    public float time;
 
 
     private void Awake()
     {
         //rb.maxAngularVelocity = 0;
         _Agent = GetComponent<NavMeshAgent>();
+        //m_Animator.SetBool("afk", true);
+        m_Animator.SetBool("afk", true);
+        m_Animator.SetBool("walk", false);
+
     }
 
 
@@ -40,10 +46,25 @@ public class navMovement : MonoBehaviour
         
     //}
 
-
+    
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
+
+        if (player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
+        {
+            m_Animator.SetBool("afk", true);
+            m_Animator.SetBool("walk", false);
+        }
+
+
+        if (player.transform.position.x != clickloc.transform.position.x && player.transform.position.z != clickloc.transform.position.z)
+        {
+            m_Animator.SetBool("afk", false);
+            m_Animator.SetBool("walk", true);
+        }
+
+
         if (Input.GetKey(KeyCode.E))
         {
             StartCoroutine("ZoomWait");
@@ -51,15 +72,39 @@ public class navMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-           Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if(Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
-                
+                clickloc.transform.position = hit.point;
+                //Instantiate(clickloc, hit.point, transform.rotation);
+                //StartCoroutine("clickSpawn");
+                //Destroy(clickloc);
+                Vector3 distanceToWalkPoint = transform.position - hit.point;
+
+
+
+                //if (distanceToWalkPoint.magnitude <= 1f)
+                //{
+                //    m_Animator.SetBool("afk", true);
+                //    m_Animator.SetBool("walk", false);
+                //}
+
+                //if (distanceToWalkPoint.magnitude > 1f)
+                //{
+                //    m_Animator.SetBool("afk", false);
+                //    m_Animator.SetBool("walk", true);
+                //}
+
             }
+
         }
+
+        
+        
+
 
         //if(rb.velocity == Vector3.zero)
         //{
@@ -78,6 +123,20 @@ public class navMovement : MonoBehaviour
         //    jumpWait();
         //}
     }
+
+    //public IEnumerator clickSpawn()
+    //{
+        
+    //    yield return new WaitForSeconds(3f);
+        
+
+    //}
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    collid
+    //}
+
 
 
 }
