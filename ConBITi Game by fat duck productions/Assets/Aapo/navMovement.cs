@@ -13,10 +13,15 @@ public class navMovement : MonoBehaviour
     public NavMeshAgent agent;
     public CinemachineFollowZoom cmfz;
    public Rigidbody rb;
-    public Animator m_Animator;
-    public GameObject clickloc;
+    public Animator runAnimator;
+
+        public GameObject clickloc;
     public GameObject player;
     public float time;
+    public GameObject axe;
+    public GameObject pickaxe;
+   
+
 
 
     private void Awake()
@@ -24,8 +29,10 @@ public class navMovement : MonoBehaviour
         //rb.maxAngularVelocity = 0;
         _Agent = GetComponent<NavMeshAgent>();
         //m_Animator.SetBool("afk", true);
-        m_Animator.SetBool("afk", true);
-        m_Animator.SetBool("walk", false);
+        runAnimator.SetBool("afk", true);
+        runAnimator.SetBool("walk", false);
+        runAnimator.SetBool("cut", false);
+
 
     }
 
@@ -51,17 +58,23 @@ public class navMovement : MonoBehaviour
     public void Update()
     {
 
-        if (player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
+
+
+if (player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
         {
-            m_Animator.SetBool("afk", true);
-            m_Animator.SetBool("walk", false);
+            runAnimator.SetBool("afk", true);
+            runAnimator.SetBool("walk", false);
+            
         }
 
 
         if (player.transform.position.x != clickloc.transform.position.x && player.transform.position.z != clickloc.transform.position.z)
         {
-            m_Animator.SetBool("afk", false);
-            m_Animator.SetBool("walk", true);
+            runAnimator.SetBool("afk", false);
+            runAnimator.SetBool("walk", true);
+            runAnimator.SetBool("cut", false);
+            axe.SetActive(false);
+            pickaxe.SetActive(false);
         }
 
 
@@ -124,13 +137,8 @@ public class navMovement : MonoBehaviour
         //}
     }
 
-    //public IEnumerator clickSpawn()
-    //{
-        
-    //    yield return new WaitForSeconds(3f);
-        
 
-    //}
+   
 
     //private void OnTriggerEnter(Collider other)
     //{
