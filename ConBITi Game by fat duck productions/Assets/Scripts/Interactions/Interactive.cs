@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Intaractive : MonoBehaviour
+public class Interactive : MonoBehaviour
 {
     [SerializeField]
     [Range (0f, 4f)]
@@ -19,17 +19,22 @@ public class Intaractive : MonoBehaviour
     private void Start()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Init();
+    }
+    public virtual void Init()
+    {
+        
     }
     void Update()
     {
         if (Vector3.Distance(transform.position, playerPos.position) <= radius && Input.GetKeyDown(KeyCode.Space))
         {
-            Interacte();
+            Interact();
         }
     }
 
 
-    public virtual void Interacte()
+    public virtual void Interact()
     {
         Debug.Log(transform.name + "does not have it`s own interaction model");
     }
