@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactive : MonoBehaviour
 {
     [SerializeField]
-    [Range (0f, 4f)]
+    [Range (0f, 20f)]
     private float radius = 1;
     private Transform playerPos;
 
