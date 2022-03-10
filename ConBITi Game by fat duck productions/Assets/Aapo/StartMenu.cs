@@ -7,9 +7,16 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     public GameObject thiscanvas;
+    public GameObject creditcanvas;
 
 
-    public void Play()
+    private void Awake()
+    {
+            creditcanvas.SetActive(false);
+
+}
+
+public void Play()
     {
         Debug.Log("play");
         SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
@@ -24,6 +31,7 @@ public class StartMenu : MonoBehaviour
     public void Credits()
     {
         Debug.Log("creds");
+        creditcanvas.SetActive(true);
     }
 
     public void Quit()
@@ -31,4 +39,8 @@ public class StartMenu : MonoBehaviour
         Debug.Log("quit");
     }
 
+    public void Back()
+    {
+        creditcanvas.SetActive(false);
+    }
 }

@@ -8,6 +8,7 @@ public class Interactive : MonoBehaviour
     [Range (0f, 20f)]
     private float radius = 1;
     private Transform playerPos;
+    private Canvas cutTreeCanvas;
 
 
     private void OnTriggerEnter(Collider other)
@@ -23,13 +24,35 @@ public class Interactive : MonoBehaviour
     }
     public virtual void Init()
     {
-        
+                cutTreeCanvas = GameObject.FindGameObjectWithTag("TreeCanvas").GetComponent<Canvas>();
     }
+
     void Update()
     {
+        if (Vector3.Distance(transform.position, playerPos.position) <= radius)
+        {
+            cutTreeCanvas.enabled = true;
+  
+        }
+
+        if (Vector3.Distance(transform.position, playerPos.position) > radius)
+        {
+            cutTreeCanvas.enabled = false;
+
+        }
+
+        //if (Vector3.Distance(transform.position, playerPos.position) > radius)
+        //{
+        //    cutTreeCanvas.SetActive(false);
+
+        //}
+
+
         if (Vector3.Distance(transform.position, playerPos.position) <= radius && Input.GetKeyDown(KeyCode.Space))
         {
+
             Interact();
+
         }
     }
 
@@ -45,4 +68,6 @@ public class Interactive : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
+
+    
 }
