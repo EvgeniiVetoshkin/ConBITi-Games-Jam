@@ -12,16 +12,14 @@ public class StartMenu : MonoBehaviour
 
     private void Awake()
     {
-            creditcanvas.SetActive(false);
+        creditcanvas.SetActive(false);
+    }
 
-}
-
-public void Play()
+    public void Play()
     {
         Debug.Log("play");
-        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Level1");
         thiscanvas.SetActive(false);
-
     }
     public void Options()
     {
