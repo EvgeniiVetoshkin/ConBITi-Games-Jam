@@ -36,11 +36,7 @@ public class Intaractive : MonoBehaviour
 
         }
 
-        //if (Vector3.Distance(transform.position, playerPos.position) > radius)
-        //{
-        //    cutTreeCanvas.SetActive(false);
 
-        //}
 
 
         if (Vector3.Distance(transform.position, playerPos.position) <= radius && Input.GetKeyDown(KeyCode.Space))
