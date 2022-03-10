@@ -18,7 +18,7 @@ public class StartMenu : MonoBehaviour
     public void Play()
     {
         Debug.Log("play");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
         thiscanvas.SetActive(false);
     }
     public void Options()

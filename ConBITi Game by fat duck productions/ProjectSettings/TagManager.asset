@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - TreeCanvas
+  - Axe
+  - Pickaxe
+  - PlayerAnimator
   layers:
   - Default
   - TransparentFX

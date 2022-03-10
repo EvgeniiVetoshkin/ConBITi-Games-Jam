@@ -19,6 +19,8 @@ public class navMovement : MonoBehaviour
     public float time;
     public GameObject axe;
     public GameObject pickaxe;
+
+    bool click = false;
    
 
 
@@ -32,6 +34,12 @@ public class navMovement : MonoBehaviour
         runAnimator.SetBool("cut", false);
 
 
+    }
+    private void Start()
+    {
+        axe.SetActive(false);
+        pickaxe.SetActive(false);
+        clickloc.transform.position = player.transform.position;
     }
 
     /*
@@ -48,25 +56,24 @@ public class navMovement : MonoBehaviour
     //    rb.AddForce(Vector3.up * 5000f);
     //    yield return new WaitForSeconds(1f);
     //    _Agent.enabled = true;
-        
+
     //}
 
-    
+
     // Update is called once per frame
     public void Update()
     {
 
 
 
-if (player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
+    if (click && player.transform.position.x == clickloc.transform.position.x && player.transform.position.z == clickloc.transform.position.z)
         {
             runAnimator.SetBool("afk", true);
             runAnimator.SetBool("walk", false);
-            
         }
 
 
-        if (player.transform.position.x != clickloc.transform.position.x && player.transform.position.z != clickloc.transform.position.z)
+        if (click && player.transform.position.x != clickloc.transform.position.x && player.transform.position.z != clickloc.transform.position.z)
         {
             runAnimator.SetBool("afk", false);
             runAnimator.SetBool("walk", true);
@@ -90,6 +97,10 @@ if (player.transform.position.x == clickloc.transform.position.x && player.trans
             {
                 agent.SetDestination(hit.point);
                 clickloc.transform.position = hit.point;
+                if (!click)
+                {
+                    click = true;
+                }
                 
                 
                 //Instantiate(clickloc, hit.point, transform.rotation);
