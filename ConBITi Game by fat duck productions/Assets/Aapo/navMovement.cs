@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Cinemachine;
+using UnityEngine.Animations;
 
 
 public class navMovement : MonoBehaviour
@@ -12,6 +13,7 @@ public class navMovement : MonoBehaviour
     public NavMeshAgent agent;
     public CinemachineFollowZoom cmfz;
    public Rigidbody rb;
+    Animator m_Animator;
     
 
 
@@ -55,8 +57,20 @@ public class navMovement : MonoBehaviour
             if(Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
+                
             }
         }
+
+        //if(rb.velocity == Vector3.zero)
+        //{
+        //    m_Animator.SetBool("ifWalking", false);
+
+        //}
+
+        //if(rb.velocity != Vector3.zero)
+        //{
+        //    m_Animator.SetBool("ifWalking", true);
+        //}
 
         //if (Input.GetKey(KeyCode.Space))
         //{
