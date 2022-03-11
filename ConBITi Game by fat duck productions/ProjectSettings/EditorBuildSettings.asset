@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Aapo/StartMenu.unity
-    guid: 66aeef8f450c57946a40c82bc5e3c615
+    path: Assets/Scenes/StartMenu.unity
+    guid: 0e8f9c022a9614b4c93f15ec4b7ead3b
   - enabled: 1
-    path: Assets/Aapo/Level1.unity
-    guid: c6e5a27d69b4de245bb374381d43f22b
+    path: Assets/Scenes/Level1.unity
+    guid: 6a467ae00f200634b800b4528c6b1d1a
   m_configObjects: {}

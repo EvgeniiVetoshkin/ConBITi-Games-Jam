@@ -8,6 +8,7 @@ public class Interactive : MonoBehaviour
     [Range (0f, 20f)]
     private float radius = 1;
     private Transform playerPos;
+    private Transform treePos;
 
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +20,7 @@ public class Interactive : MonoBehaviour
     private void Start()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        treePos = GameObject.FindGameObjectWithTag("TreeMid").GetComponent<Transform>();
         Init();
     }
     public virtual void Init()
@@ -29,6 +31,7 @@ public class Interactive : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && Vector3.Distance(transform.position, playerPos.position) <= radius)
         {
+            playerPos.LookAt(treePos);
             Interact();
         }
     }

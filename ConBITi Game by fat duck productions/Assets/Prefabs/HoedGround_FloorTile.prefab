@@ -111,9 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafdee9ea8a63d149ab23395ca85af3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSecondsToGrow: 8.5
-  planted: 1
-  growed: 0
+  maxSecondsToGrow: 2
   minSecondsToGrow: 1
   wheatPref: {fileID: 7964890399951029960, guid: b1152637e70a8f54f83ded5896abc09c, type: 3}
 --- !u!114 &6872930091158398675
